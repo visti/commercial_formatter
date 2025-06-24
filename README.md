@@ -34,3 +34,12 @@ This project is intended primarily as a reference for file handling and data pro
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Running Tests
+
+This project uses `pytest` for unit tests. From the repository root, run:
+
+```bash
+pytest
+```
+
