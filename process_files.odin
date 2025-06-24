@@ -70,18 +70,18 @@ process_files :: proc(
 		fmt.eprintln("Error creating rejectfile: ", rejectfile_open_error)
 	}
 
-	outputFileHandle, err := os.open(outputFile, os.O_CREATE | os.O_WRONLY | os.O_TRUNC)
-	if err != nil {
-		fmt.eprintln("ERROR: could not create output file:", err)
-	}
-	defer os.close(outputFileHandle)
+        outputFileHandle, open_err := os.open(outputFile, os.O_CREATE | os.O_WRONLY | os.O_TRUNC)
+        if open_err != nil {
+                fmt.eprintln("ERROR: could not create output file:", open_err)
+        }
+        defer os.close(outputFileHandle)
 
-	write_headlines(currentStation, outputFileHandle)
-	write_headlines(currentStation, rejectionFile)
+        write_headlines(currentStation, outputFileHandle)
+        write_headlines(currentStation, rejectionFile)
 
-	if err != nil {
-		fmt.printf("%v\n", err)
-	}
+        if open_err != nil {
+                fmt.printf("%v\n", open_err)
+        }
 
 	//make stopwords
 	for word in DEFAULT_STOPWORDS {
@@ -129,15 +129,15 @@ process_files :: proc(
 				delete(clonedString)
 			}
 
-			_, err := os.write_string(outputFileHandle, outputLine)
-			delete(outputLine)
-		}
+                        _, write_err := os.write_string(outputFileHandle, outputLine)
+                        delete(outputLine)
+                }
 
-		delete(checkedLine)
+                delete(checkedLine)
 
-		if err != nil {
-			fmt.printf("%v\n", err)
-		}
+                if write_err != nil {
+                        fmt.printf("%v\n", write_err)
+                }
 		delete(parts)
 	}
 	wrap_up(rejected, processed)
