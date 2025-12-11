@@ -5,7 +5,7 @@ This project is a reference implementation for managing and processing specific 
 ## Features
 
 - **Station-Specific Processing:**  
-  Processes files based on predefined stations such as Bauer, Jyskfynske, and Globus, each with their own custom requirements.
+  Processes files based on predefined stations, such as Bauer, Jyskfynske, Globus, Radio4, ANR, and ABC, each with their own custom requirements.
 
 - **Dynamic File Handling:**  
   Demonstrates how to read eligible files from the current directory based on file extensions and join file contents for further processing.
